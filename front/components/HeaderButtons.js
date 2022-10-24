@@ -1,6 +1,7 @@
-import { BellFilled, EditFilled, UserOutlined } from '@ant-design/icons';
-import { Avatar, Popover } from 'antd';
+import { EditFilled, UserOutlined } from '@ant-design/icons';
+import { Avatar } from 'antd';
 import React, { useMemo, useState, useCallback } from 'react';
+import Notification from './Notification';
 
 const HeaderButtons = () => {
   const iconStyle = useMemo(() => ({
@@ -10,21 +11,52 @@ const HeaderButtons = () => {
     margin: '10px',
     cursor: 'pointer',
   }));
+  const outerSpanStyle = useMemo(() => ({
+    width: '120px',
+    textAlign: 'center',
+    verticalAlign: 'middle'
+  }));
+  const btnStyle = useMemo(() => ({
+    backgroundColor: '#2d2121',
+    border: '1px solid white',
+    padding: '3px 18px',
+    color: 'white',
+    margin: '0px 10px',
+    cursor: 'pointer',
+  }));
+  const btnMouseEnter = useCallback((e) => {
+    e.target.style.border = '3px solid #ffffff';
+    e.target.style.fontWeight = 'bold';
+  });
+  const btnMouseLeave = useCallback((e) => {
+    e.target.style.border = '1px solid #ffffff';
+    e.target.style.fontWeight = 'normal';
+  });
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const notLoggedIn = (
-    <div
-      style={{
-        backgroundColor: '#2d2121',
-        border: '1px solid white',
-        padding: '2px 18px',
-        color: 'white',
-      }}
-    >
-      로그인
-    </div>
+    <>
+      <span style={outerSpanStyle}>
+        <span
+          style={btnStyle}
+          onMouseEnter={btnMouseEnter}
+          onMouseLeave={btnMouseLeave}
+        >
+          로그인
+        </span>
+      </span>
+      <span style={outerSpanStyle}>
+        <span
+          style={btnStyle}
+          onMouseEnter={btnMouseEnter}
+          onMouseLeave={btnMouseLeave}
+        >
+          회원가입
+        </span>
+      </span>
+    </>
   );
+
   const writeBtnClicked = useCallback((e) => {
-    // console.log(`${__dirname}Post`)
     location.href = `${__dirname}post`;
   });
   const bellBtnClicked = useCallback((e) => {
@@ -34,86 +66,14 @@ const HeaderButtons = () => {
     console.log(e);
   });
 
-  const [clicked, setClicked] = useState(false);
-  const [hovered, setHovered] = useState(false);
-  const hide = () => {
-    setClicked(false);
-    setHovered(false);
-  };
-  const handleHoverChange = (open) => {
-    setHovered(open);
-    setClicked(false);
-  };
-  const handleClickChange = (open) => {
-    setHovered(false);
-    setClicked(open);
-  };
-
-  const [alarms, setAlarms] = useState([
-    { key: 0, title: 'alarm title', type: 0, content: 'aramr content' },
-    { key: 1, title: 'alarm title', type: 0, content: 'aramr content' },
-  ]);
-
-  const notificationContent = useMemo(() => (
-    <div style={{ width: '400px', height: '250px' }}>
-      {alarms.length === 0 ? (
-        <div
-          style={{
-            height: '225px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          새로운
-        </div>
-      ) : (
-        alarms.map((alarm) => (
-          <div key={alarm.key}>
-            <div>{alarm.title}</div>
-            <div>{alarm.content}</div>
-          </div>
-        ))
-      )}
-
-      <div
-        style={{
-          height: '25px',
-          borderTop: '1px solid #eeeeee',
-          textAlign: 'center',
-        }}
-      >
-        내 소식 바로가기
-      </div>
-    </div>
-  ));
-
   const loggedIn = (
     <div>
       <span style={iconStyle} onClick={writeBtnClicked}>
         <EditFilled />
       </span>
-      <Popover
-        placement="bottomRight"
-        title={'알림'}
-        content={notificationContent}
-        trigger="hover"
-        open={hovered}
-        onOpenChange={handleHoverChange}
-      >
-        <Popover
-          placement="bottomRight"
-          title={'알림'}
-          content={notificationContent}
-          trigger="click"
-          open={clicked}
-          onOpenChange={handleClickChange}
-        >
-          <span style={iconStyle} onClick={bellBtnClicked}>
-            <BellFilled />
-          </span>
-        </Popover>
-      </Popover>
+      <span style={iconStyle} onClick={bellBtnClicked}>
+        <Notification />
+      </span>
       <span style={iconStyle} onClick={profileBtnClicked}>
         <Avatar style={{ bottom: '3px' }} size={27} icon={<UserOutlined />} />
       </span>
