@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start":"next start"
+    "start":"next start -p ${PORT}"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +15,8 @@
     "antd": "^4.23.4",
     "next": "^12.3.1",
     "react-responsive": "^9.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
