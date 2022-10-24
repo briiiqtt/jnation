@@ -1,12 +1,12 @@
 {
-  "name": "jnation",
+  "name": "jnation-front",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start":"next start -p ${PORT}"
+    "start": "next start -p ${PORT}"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "react-responsive": "^9.0.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3"
   }
 }
