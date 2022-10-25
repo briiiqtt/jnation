@@ -3,7 +3,7 @@ import React from 'react';
 const Body = ({ children }) => {
   return (
     <>
-      <>{children}</>
+      {noPadding ? children : <div style={{ padding: '20px' }}>{children}</div>}
     </>
   );
 };

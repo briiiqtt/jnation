@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import CenterBanner from '../components/CenterBannner';
 import PcLayout from '../components/PcLayout';
 
 const Main = ({ setTitle }) => {
@@ -8,17 +9,7 @@ const Main = ({ setTitle }) => {
   return (
     <>
       <PcLayout>
-        <div
-          style={{
-            backgroundImage:
-              'url(https://sgimage.netmarble.com/images/netmarble/enn/20220728/gaco1658997238633.png)',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            width: '100%',
-            height: 0,
-            paddingTop: '33.3%',
-          }}
-        ></div>
+        <CenterBanner />
         {/* <img
           src="https://sgimage.netmarble.com/images/netmarble/enn/20220728/gaco1658997238633.png"
           style={{ width: '100%' }}

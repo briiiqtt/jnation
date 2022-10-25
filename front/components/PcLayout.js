@@ -7,7 +7,7 @@ import Header from './Header';
 import Body from './Body';
 import { Col, Row } from 'antd';
 
-const PcLayout = ({ children }) => {
+const PcLayout = ({ children, noPadding }) => {
   const [isPc, setIsPc] = useState();
   const pc = useMediaQuery({
     query: '(min-width:769px)',
@@ -28,9 +28,7 @@ const PcLayout = ({ children }) => {
               <Col span={6}>
                 <Sidebar />
               </Col>
-              <Col span={18}>
-                <Body children={children} />
-              </Col>
+              <Col span={18}>{children}</Col>
             </Row>
           </Col>
           <Col span={3}>

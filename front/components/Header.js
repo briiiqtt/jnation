@@ -15,7 +15,7 @@ const Header = () => {
     padding: '4px 0px',
   }));
   const style2 = useMemo(() => ({
-    height: '50px',
+    height: '58px',
   }));
   const style3 = useMemo(() => ({
     display: 'flex',

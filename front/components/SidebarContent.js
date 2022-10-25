@@ -60,7 +60,10 @@ const SidebarContent = () => {
   return (
     <>
       <div style={{ padding: '20px' }}>
-        <div style={{ padding: '10px' }} className="ant-collapse-header">
+        <div
+          style={{ padding: '10px', cursor: 'pointer' }}
+          className="ant-collapse-header"
+        >
           전체 글
         </div>
         <Collapse
@@ -80,6 +83,7 @@ const SidebarContent = () => {
                 <p
                   key={i}
                   className="menu-inner"
+                  style={{ cursor: 'pointer' }}
                   onClick={() => menuClicked(inner.page)}
                 >
                   {inner.name}
