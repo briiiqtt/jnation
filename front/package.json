@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next dev -p 80",
     "build": "next build",
-    "start": "next start -p ${PORT}"
+    "start": "next start -p 80"
   },
   "author": "",
   "license": "ISC",
@@ -15,9 +15,5 @@
     "antd": "^4.23.4",
     "next": "^12.3.1",
     "react-responsive": "^9.0.0"
-  },
-  "devDependencies": {
-    "cross-env": "^7.0.3",
-    "dotenv": "^16.0.3"
   }
 }
