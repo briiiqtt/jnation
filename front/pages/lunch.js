@@ -6,7 +6,7 @@ const Lunch = () => {
 
   const getImg = useCallback(() => {
     const tempArr = [];
-    fetch(`http://10.0.0.15:59999/lunch-fetch`)
+    fetch(`http://${process.env.NEXT_PUBLIC_BACK_SERVER_ADDR}:${process.env.NEXT_PUBLIC_BACK_SERVER_PORT}/lunch-fetch`)
       .then((r) => r.json())
       .then((r) => {
         if (!r.result_data.items) {
