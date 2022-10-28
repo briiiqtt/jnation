@@ -12,7 +12,7 @@ app.get('/lunch-fetch', (req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
   axios
     .get(
-      `https://openapi.band.us/v2/band/posts?access_token=${process.env.ACCESS_TOKEN}`
+      `https://openapi.band.us/v2/band/posts?band_key=AABguEV2l94PCzyYbT-RyIXF&access_token=${process.env.ACCESS_TOKEN}`
     )
     .then((r) => {
       console.log(r.data);
