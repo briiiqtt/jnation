@@ -1,59 +1,36 @@
-// import './env.js'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useReducer } from 'react';
 import 'antd/dist/antd.css';
 import Head from 'next/head';
 import PcLayout from '../components/PcLayout';
+import BoardReducer from '../../reducers/board-reducer';
 
-// const Mobile = ({ children }) => {
-//   const [isMobile, setIsMobile] = useState();
-//   const mobile = useMediaQuery({
-//     query: '(max-width:768px)',
-//   });
-//   useEffect(() => {
-//     if (mobile) setIsMobile(mobile);
-//   }, []);
-//   return <>{isMobile && children}</>;
-// };
-// const Pc = ({ children }) => {
-//   const [isPc, setIsPc] = useState();
-//   const pc = useMediaQuery({
-//     query: '(min-width:769px)',
-//   });
-//   useEffect(() => {
-//     if (pc) setIsPc(pc);
-//   }, []);
-//   return <>{isPc && children}</>;
-// };
+// export const BoardDispatch = React.createContext(null);
 
-// const Mobile = ({ children }) => {
-//   const [isMobile, setIsMobile] = useState();
-//   useEffect(() => {
-//     if (window.matchMedia('(min-width: 768px)').matches) {
-//       setIsMobile(window.matchMedia('(min-width: 768px)').matches);
+// const boardReducer = (state, action) => {
+//   switch (action.type) {
+//     case 0: {
 //     }
-//   }, []);
-//   return <>{isMobile && children}</>;
-// };
-// const Pc = ({ children }) => {
-//   const [isPc, setIsPc] = useState();
-//   useEffect(() => {
-//     if (window.matchMedia('(min-width: 768px)').matches) {
-//       setIsPc(window.matchMedia('(min-width: 768px)').matches);
-//     }
-//   }, []);
-//   return <>{isPc && children}</>;
+//     default:
+//       return state;
+//   }
 // };
 
 const App = ({ Component }) => {
   const [title, setTitle] = useState('제 2의 나라');
+
+  // const [state, dispatch] = useReducer(boardReducer, {});
+
   return (
     <>
       <Head>
         <meta charSet="utf-8" />
         <title>{title}</title>
       </Head>
+      {/* <BoardDispatch.Provider value={dispatch}> */}
+      {/* <BoardReducer> */}
       <Component setTitle={setTitle} />
-      {/* <Mobile children={<Component setTitle={setTitle} />} /> */}
+      {/* </BoardReducer> */}
+      {/* </BoardDispatch.Provider> */}
       {/* <PcLayout children={<Component setTitle={setTitle} />} /> */}
       <style jsx global>
         {`
@@ -74,7 +51,7 @@ const App = ({ Component }) => {
             background-color: #eeeeee;
           }
           .ant-popover-title {
-            background-color: #E6EAEC;
+            background-color: #e6eaec;
           }
         `}
       </style>

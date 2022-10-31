@@ -2,30 +2,13 @@ import { EyeFilled, CommentOutlined } from '@ant-design/icons';
 import { Avatar, Button, List, Skeleton } from 'antd';
 import React, { useEffect, useState } from 'react';
 
-const BoardBody = () => {
-  const [list, setList] = useState([]);
-
-  useEffect(() => {
-    const tempArr = new Array(11).fill().map((node, idx) => ({
-      key: idx,
-      id: 'id' + idx,
-      title: '제목' + idx,
-      author: '작성자' + idx,
-      content: '본문' + idx,
-      viewCnt: 125,
-      comments: [1, 2, 3],
-      imgs: [1],
-      createdAt: 'YYYY-MM-DD hh:mm:ss',
-    }));
-    console.log(tempArr);
-    setList(tempArr);
-  },[]);
+const BoardBody = ({posts}) => {
 
   return (
     <List
       className="demo-loadmore-list"
       itemLayout="horizontal"
-      dataSource={list}
+      dataSource={posts}
       renderItem={(item) => (
         <List.Item
           actions={

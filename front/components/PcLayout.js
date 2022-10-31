@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import Banner from './Banner';
@@ -19,22 +19,20 @@ const PcLayout = ({ children, noPadding }) => {
     isPc && (
       <>
         <Header />
-        <Row>
-          <Col span={3}>
-            <LeftBanner />
-          </Col>
-          <Col span={18}>
-            <Row>
-              <Col span={6}>
-                <Sidebar />
-              </Col>
-              <Col span={18}>{children}</Col>
-            </Row>
-          </Col>
-          <Col span={3}>
-            <RightBanner />
-          </Col>
-        </Row>
+        {/* <LeftBanner /> */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            height: `calc(100vh - 50px)`,
+            overflowY: 'scroll',
+            msOverflowStyle: 'none',
+          }}
+        >
+          <Sidebar />
+          <Body>{children}</Body>
+        </div>
+        {/* <RightBanner /> */}
       </>
     )
   );
@@ -43,26 +41,27 @@ const PcLayout = ({ children, noPadding }) => {
 const LeftBanner = () => {
   return (
     <>
-      <div
+      {/* <div
         style={{
-          width: '13%',
+          // right: '500px',
+          // width: '13%',
           position: 'fixed',
-          right: '100%',
-          height: '100%',
-          top: '1',
-          left: '1',
-          right: '1',
-          overflow: 'hidden',
+          // right: '100%',
+          // height: '100%',
+          // top: '1',
+          // left: '1',
+          // right: '1',
+          // overflow: 'hidden',
           backgroundImage: `url("https://sgimage.netmarble.com/images/netmarble/enn/20220728/bhst1658997251182.jpg")`,
         }}
-      ></div>
+      ></div> */}
     </>
   );
 };
 const RightBanner = () => {
   return (
     <>
-      <div
+      {/* <div
         style={{
           width: '13%',
           position: 'fixed',
@@ -74,7 +73,8 @@ const RightBanner = () => {
           overflow: 'hidden',
           backgroundImage: `url("https://sgimage.netmarble.com/images/netmarble/enn/20220728/qjsp1658997256535.jpg")`,
         }}
-      ></div>
+      ></div> */}
+      <img src="https://sgimage.netmarble.com/images/netmarble/enn/20220728/qjsp1658997256535.jpg"></img>
     </>
   );
 };
