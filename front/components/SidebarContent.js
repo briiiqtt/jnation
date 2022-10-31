@@ -3,10 +3,7 @@ import { Collapse } from 'antd';
 
 const { Panel } = Collapse;
 
-import { BoardDispatch } from './PcLayout';
-
 const SidebarContent = () => {
-  // const dispatch = useContext(BoardDispatch);
   const [menus, setMenus] = useState([
     {
       key: 0,
@@ -60,7 +57,6 @@ const SidebarContent = () => {
     switch (type) {
       case 'board': {
         history.pushState({ name, boardId }, '', `/board?boardId=${boardId}`);
-        dispatch({ type: 'menuClicked' });
         break;
       }
       default:

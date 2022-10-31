@@ -2,23 +2,11 @@ import React, { useState, useReducer } from 'react';
 import 'antd/dist/antd.css';
 import Head from 'next/head';
 import PcLayout from '../components/PcLayout';
-import BoardReducer from '../../reducers/board-reducer';
 
-// export const BoardDispatch = React.createContext(null);
-
-// const boardReducer = (state, action) => {
-//   switch (action.type) {
-//     case 0: {
-//     }
-//     default:
-//       return state;
-//   }
-// };
+import wrapper from '../store/configureStore';
 
 const App = ({ Component }) => {
   const [title, setTitle] = useState('제 2의 나라');
-
-  // const [state, dispatch] = useReducer(boardReducer, {});
 
   return (
     <>
@@ -26,11 +14,7 @@ const App = ({ Component }) => {
         <meta charSet="utf-8" />
         <title>{title}</title>
       </Head>
-      {/* <BoardDispatch.Provider value={dispatch}> */}
-      {/* <BoardReducer> */}
       <Component setTitle={setTitle} />
-      {/* </BoardReducer> */}
-      {/* </BoardDispatch.Provider> */}
       {/* <PcLayout children={<Component setTitle={setTitle} />} /> */}
       <style jsx global>
         {`
@@ -59,4 +43,4 @@ const App = ({ Component }) => {
   );
 };
 
-export default App;
+export default wrapper.withRedux(App);

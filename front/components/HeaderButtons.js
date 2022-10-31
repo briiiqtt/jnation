@@ -2,8 +2,11 @@ import { EditFilled, UserOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
 import React, { useMemo, useState, useCallback } from 'react';
 import Notification from './Notification';
+import { useSelector, useDispatch } from 'react-redux';
 
 const HeaderButtons = () => {
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+
   const iconStyle = useMemo(() => ({
     fontSize: '1.5rem',
     color: '#ffffff',
@@ -14,7 +17,7 @@ const HeaderButtons = () => {
   const outerSpanStyle = useMemo(() => ({
     width: '120px',
     textAlign: 'center',
-    verticalAlign: 'middle'
+    verticalAlign: 'middle',
   }));
   const btnStyle = useMemo(() => ({
     backgroundColor: '#2d2121',
@@ -24,6 +27,7 @@ const HeaderButtons = () => {
     margin: '0px 10px',
     cursor: 'pointer',
   }));
+
   const btnMouseEnter = useCallback((e) => {
     e.target.style.border = '3px solid #ffffff';
     e.target.style.fontWeight = 'bold';
@@ -32,7 +36,7 @@ const HeaderButtons = () => {
     e.target.style.border = '1px solid #ffffff';
     e.target.style.fontWeight = 'normal';
   });
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
   const notLoggedIn = (
     <>
       <span style={outerSpanStyle}>
