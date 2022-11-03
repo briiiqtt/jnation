@@ -1,11 +1,19 @@
 import { EditFilled, UserOutlined } from '@ant-design/icons';
-import { Avatar } from 'antd';
-import React, { useMemo, useState, useCallback } from 'react';
-import Notification from './Notification';
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+import { loginAction } from '../../reducers';
+
+import NotificDropdown from './NotificDropdown';
+import ProfileDropdown from './ProfileDropdown';
 
 const HeaderButtons = () => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const dispatch = useDispatch();
+
+  const onLoginBtn = useCallback(() => {
+    dispatch(loginAction({ id: 'id', pw: 'pw' }));
+  });
 
   const iconStyle = useMemo(() => ({
     fontSize: '1.5rem',
@@ -39,7 +47,7 @@ const HeaderButtons = () => {
 
   const notLoggedIn = (
     <>
-      <span style={outerSpanStyle}>
+      <span style={outerSpanStyle} onClick={onLoginBtn}>
         <span
           style={btnStyle}
           onMouseEnter={btnMouseEnter}
@@ -63,23 +71,17 @@ const HeaderButtons = () => {
   const writeBtnClicked = useCallback((e) => {
     location.href = `${__dirname}post`;
   });
-  const bellBtnClicked = useCallback((e) => {
-    console.log(e);
-  });
-  const profileBtnClicked = useCallback((e) => {
-    console.log(e);
-  });
 
   const loggedIn = (
     <div>
       <span style={iconStyle} onClick={writeBtnClicked}>
         <EditFilled />
       </span>
-      <span style={iconStyle} onClick={bellBtnClicked}>
-        <Notification />
+      <span style={iconStyle}>
+        <NotificDropdown />
       </span>
-      <span style={iconStyle} onClick={profileBtnClicked}>
-        <Avatar style={{ bottom: '3px' }} size={27} icon={<UserOutlined />} />
+      <span style={iconStyle}>
+        <ProfileDropdown />
       </span>
     </div>
   );

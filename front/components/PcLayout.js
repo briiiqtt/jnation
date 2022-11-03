@@ -2,8 +2,8 @@ import React, { useState, useEffect, useReducer } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import Banner from './Banner';
-import Sidebar from './Sidebar';
-import Header from './Header';
+import Sidebar from './Sidebar/Sidebar';
+import Header from './Header/Header';
 import Body from './Body';
 import { Col, Row } from 'antd';
 

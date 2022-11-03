@@ -2,7 +2,7 @@ import { BellFilled } from '@ant-design/icons';
 import React, { useMemo, useState } from 'react';
 import { Popover } from 'antd';
 
-const Notification = () => {
+const NotificDropdown = () => {
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
   const hide = () => {
@@ -98,4 +98,4 @@ const Notification = () => {
   );
 };
 
-export default Notification;
+export default NotificDropdown;
